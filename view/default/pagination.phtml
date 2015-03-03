@@ -1,0 +1,62 @@
+<!--
+See http://developer.yahoo.com/ypatterns/pattern.php?pattern=itempagination
+-->
+<?php $this->plugin('translate')->setTranslatorTextDomain('Ageme\Navigation'); ?>
+<?php if ($this->pageCount): ?>
+	<?php $params = isset($this->params) ? $this->params : array(); // retrieve route params ?>
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="dataTables_info">
+				<?= $this->translate('Showing') ?> <?= $this->firstItemNumber; ?> - <?= $this->lastItemNumber; ?>
+				<?= $this->translate('of') ?> <?= $this->totalItemCount; ?>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<div class="dataTables_paginate paging_bootstrap">
+				<ul class="pagination">
+					<!-- First page link -->
+					<?php $enable = isset($this->previous) ? true : false; ?>
+					<li class="<?= $enable ? : 'disabled' ?>">
+						<a href="<?= $enable ? $this->url($this->route, array_merge($params, ['page' => $this->first])) : '#'; ?>">
+							<?= $this->translate('First') ?>
+						</a>
+					</li>
+
+					<!-- Previous page link -->
+					<?php $enable = isset($this->previous) ? true : false; ?>
+					<li class="<?= $enable ? : 'disabled' ?>">
+						<a href="<?= $enable ? $this->url($this->route, array_merge($params, ['page' => $this->previous])) : '#'; ?>">
+							<span class="glyphicon glyphicon-arrow-left"></span>
+						</a>
+					</li>
+
+					<!-- Listing page links -->
+					<?php foreach ($this->pagesInRange as $page): ?>
+						<li class="<?= ($page == $this->current) ? 'active' : '' ?>">
+							<a href="<?php echo $this->url($this->route, array_merge($params, ['page' => $page])); ?>">
+								<?php echo $page; ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+
+					<!-- Next page link -->
+					<?php $enable = isset($this->next) ? true : false; ?>
+					<li class="<?= $enable ? : 'disabled' ?>">
+						<a href="<?= $enable ? $this->url($this->route, array_merge($params, ['page' => $this->next])) : '#'; ?>">
+							<span class="glyphicon glyphicon-arrow-right"></span>
+						</a>
+					</li>
+
+					<!-- Last page link -->
+					<?php $enable = isset($this->next) ? true : false; ?>
+					<li class="<?= $enable ? : 'disabled' ?>">
+						<a href="<?= $enable ? $this->url($this->route, array_merge($params, ['page' => $this->last])) : '#'; ?>">
+							<?= $this->translate('Last') ?>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- End .span4 -->
+	</div>
+<?php endif; ?>

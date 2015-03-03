@@ -1,0 +1,75 @@
+<?php echo $this->navigation('navigation')->menu()->render(); return ?>
+
+<!-- sidebar menu: : style can be found in sidebar.less -->
+<?php
+/* @var $container Zend\Navigation\Navigation */
+$navigation = $this->navigation('navigation');
+$menu = $navigation->menu()->setTranslatorTextDomain('Ageme\Navigation');
+//$this->plugin('translate')->setTranslatorTextDomain('Ageme\Navigation');
+$container = $menu->getContainer();
+?>
+<!-- sidebar menu: : style can be found in sidebar.less -->
+<ul class="<?php echo $this->navigation($container)->menu()->getUlClass(); ?>">
+	<li class="header"><?= $this->translate('Main navigation') ?></li>
+
+
+	<?php foreach ($container as $page): ?>
+		<?php if (!$this->navigation()->accept($page)) continue; ?>
+		<?php /* @var $page Zend\Navigation\Page\Mvc */ ?>
+		<?php $hasChildren = $page->hasPages() ?>
+		<?php if (!$hasChildren): ?>
+			<li class="<?= ($page->isActive()) ? 'active' : '' ?>">
+				<a href="<?= $page->getHref() ?>" <?php if (!$page->getTarget()): ?>target="<?= $page->getTarget(); ?>"<?php endif; ?>>
+					<?php if ($page->get('icon')): ?>
+						<i class="<?= $page->get('icon'); ?>"></i>
+					<?php endif; ?>
+					<?php $translatorDomain = ($namespace = $page->get('namespace')) ? $namespace : $this->navigation($container)->getTranslatorTextDomain(); ?>
+					<span><?= $this->escapeHtml($this->translate($page->getLabel(), $translatorDomain)); ?></span>
+					<!--<small class="badge pull-right bg-yellow">12</small>-->
+				</a>
+			</li>
+		<?php else : ?>
+			<?php
+			$translatorDomain = ($namespace = $page->get('namespace')) ? $namespace : $this->navigation($container)->getTranslatorTextDomain();
+			//check if access is allowed at least one item
+			$access = false;
+			foreach ($page->getPages() as $child) {
+				if ($this->navigation()->accept($child) && $child->get('separator') !== true) {
+					$access = true;
+				}
+			}
+			if ($access) :
+			?>
+				<li class="treeview<?= ($page->isActive(true)) ? ' active' : '' ?>">
+					<a href="<?= $page->getHref() ?>" <?php if (!$page->getTarget()): ?>target="<?= $page->getTarget(); ?>"<?php endif; ?>>
+						<?php if ($page->get('icon')): ?>
+							<i class="<?= $page->get('icon'); ?>"></i>
+						<?php endif; ?>
+						<span><?= $this->escapeHtml($this->translate($page->getLabel(), $translatorDomain)); ?></span>
+						<i class="fa fa-angle-left pull-right"></i>
+					</a>
+					<ul class="treeview-menu">
+						<?php foreach ($page->getPages() as $child): ?>
+							<?php if (!$this->navigation()->accept($child)) continue; ?>
+							<?php if ($child->get('separator') === true): ?>
+								<li class="divider"></li>
+								<?php
+								continue;
+							endif;
+							?>
+							<li class="<?= ($child->isActive()) ? 'active' : '' ?>">
+								<a href="<?= $child->getHref() ?>" <?php if (!$child->getTarget()): ?>target="<?= $child->getTarget(); ?>"<?php endif; ?>>
+									<?php if ($child->get('icon')): ?>
+										<i class="<?= $child->get('icon'); ?>"></i>
+									<?php endif; ?>
+									<?php //$translatorDomain = ($namespace = $page->get('namespace')) ? $namespace : $this->navigation($container)->getTranslatorTextDomain(); ?>
+									<span><?= $this->escapeHtml($this->translate($child->getLabel(), $translatorDomain)); ?></span>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</li>
+			<?php endif; ?>
+		<?php endif; ?>
+	<?php endforeach; ?>
+</ul>
