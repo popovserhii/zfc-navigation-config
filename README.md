@@ -40,7 +40,6 @@ Sample use for menu:
 
 Add to `./config/autoload/global.conf` or create own config file next config
 
-    ```php
     <?php
     return [
         'navigation_helpers' => [
@@ -60,4 +59,3 @@ Add to `./config/autoload/global.conf` or create own config file next config
         ],
         // ...
     ];
-    ```
