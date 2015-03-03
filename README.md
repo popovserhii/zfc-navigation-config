@@ -45,11 +45,10 @@ Add to `./config/autoload/global.conf` or create own config file next config
     return [
         'navigation_helpers' => [
             'factories' => [
-                'menu' 		=> 'Ageme\Navigation\View\Helper\Factory\NavigationHelperFactory',
-	            // other navigation component: breadcrumbs, links, sitemap
+                'menu' => 'Ageme\Navigation\View\Helper\Factory\NavigationHelperFactory'
+                // other navigation component: breadcrumbs, links, sitemap
             ]
         ],
-
         'navigation_helper_config' => [
             'menu' => [
                 'ulClass' => 'sidebar-menu',
