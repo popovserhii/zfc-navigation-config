@@ -1,7 +1,7 @@
 ZF2 Config for Navigation Module
 ------------
 
-Possibility add settings for navigation component through config file.
+Possibility add settings for navigation components through config file.
 
 **Still Alpha!! Licence to be defined!!**
 
