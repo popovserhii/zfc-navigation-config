@@ -15,9 +15,11 @@
 	"autoload": {
 		"psr-0": {
 			"Ageme\\Navigation\\": "src"
-		}
+		},
+		 "classmap": [
+			"./Module.php"
+		]
 	},
-	"target-dir": "Ageme/Navigation",
 	"require": {
 		"php": ">=5.4.0",
 		"zendframework/zend-navigation": "dev-master"
