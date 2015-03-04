@@ -1,5 +1,5 @@
 {
-	"name": "ageme/zfc-navigation",
+	"name": "ageme/zf-navigation",
 	"type": "module",
 	"description": "Possibility add settings for navigation components through config file",
 	"keywords": ["zf2", "navigation"],
