@@ -36,7 +36,7 @@ Possibility add settings for navigation components through config file.
 
 See `./Ageme/Navigation/config/module.config.php`
 
-Sample use for menu:
+Sample usage of menu config:
 
 Add to `./config/autoload/global.conf` or create own config file next config
 
