@@ -1,17 +1,17 @@
 {
-    "name": "popovsergiy/zfc-navigation-config",
-    "type": "module",
-    "description": "Possibility add settings for navigation components through config file",
-    "keywords": ["zf2", "navigation"],
-    "authors": [
-        {
-            "name": "popovsergiy"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/popovsergiy/zfc-navigation-config/issues"
-    },
-    "homepage": "https://github.com/popovsergiy/zfc-navigation-config",
+	"name": "ageme/navigation",
+	"type": "module",
+	"description": "Possibility add settings for navigation components through config file",
+	"keywords": ["zf2", "navigation"],
+	"authors": [
+		{
+		    "name": "popovsergiy"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/popovsergiy/zfc-navigation-config/issues"
+	},
+	"homepage": "https://github.com/popovsergiy/zfc-navigation-config",
 	"autoload": {
 		"psr-0": {
 			"Ageme\\Navigation\\": "src"
