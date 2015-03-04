@@ -28,7 +28,7 @@ Possibility add settings for navigation components through config file.
 
     ```json
     "require": {
-        "popovsergiy/zfc-navigation-config": "dev-master"
+        "ageme/zf-navigation": "dev-master"
     }
     ```
 
