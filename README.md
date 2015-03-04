@@ -38,7 +38,7 @@ See `./Ageme/Navigation/config/module.config.php`
 
 Sample usage of menu config:
 
-Add to `./config/autoload/global.conf` or create own config file next config
+Add to `./config/autoload/global.conf` or create own config file with next content
 
     <?php
     return [
